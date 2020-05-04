@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+
+    h1 Cartes
+
+    a(href='/cartes/ajouter') Nouvelle carte
+    
+    each carte in cartes
+        p
+            a(href='/cartes/'+ carte.id)= carte.genre

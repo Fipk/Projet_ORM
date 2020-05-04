@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+
+            h1 Register
+            form(action='/register' method='POST')
+              .form-group
+                label(for='username') Username
+                input.form-control#username(type='text', name='username')
+
+              .form-group
+                label(for='firstname') Firstname
+                input.form-control#firstname(type='text', name='firstname')
+              
+              .form-group
+                label(for='lastname') Lastname
+                input.form-control#lastname(type='text', name='lastname')
+
+              .form-group
+                label(for='password') Password
+                input.form-control#password(type='password', name='password')
+
+              .form-group
+                label(for='confirmPassword') Password confirmation
+                input.form-control#confirmPassword(type='password', name='confirmPassword')
+
+              input.btn.btn-primary(type='submit')

@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+
+    h1 Nouvelle carte
+    form(action='/cartes' method='POST')
+
+        .form-group
+        label(for='firstname') Firstname
+        input.form-control#firstname(type = 'text', name = 'firstname')
+
+        .form-group
+        label(for='genre') Genre
+        input.form-control#genre(type = 'text', name = 'genre')
+
+        .form-group
+        label(for='type') Type
+        input.form-control#type(type = 'text', name = 'type')
+
+        .form-group
+        label(for='damage') Damage
+        input.form-control#damage(type = 'text', name = 'damage')
+
+        .form-group
+        label(for='defense') Defense
+        input.form-control#defense(type = 'text', name = 'defense')
+
+        .form-group
+        label(for='health') Health
+        input.form-control#health(type = 'text', name = 'health')
+
+
+        input.btn.btn-primary(type='submit')

@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+
+    h1 Nouvelle carte
+    form(action='/cartes/' + carte.id +"/patch", method='POST')
+
+        .form-group
+        label(for='firstname') Firstname
+        input.form-control#firstname(type = 'text', name = 'firstname', value = carte.firstname)
+
+        .form-group
+        label(for='genre') Genre
+        input.form-control#genre(type = 'text', name = 'genre', value = carte.genre)
+
+        .form-group
+        label(for='type') Type
+        input.form-control#type(type = 'text', name = 'type', value = carte.type)
+
+        .form-group
+        label(for='damage') Damage
+        input.form-control#damage(type = 'text', name = 'damage', value = carte.damage)
+
+        .form-group
+        label(for='defense') Defense
+        input.form-control#defense(type = 'text', name = 'defense', value = carte.defense)
+
+        .form-group
+        label(for='health') Health
+        input.form-control#health(type = 'text', name = 'health', value = carte.health)
+
+
+        input.btn.btn-primary(type='submit')

@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+
+    h1= carte.firstname
+    ul
+        li= "id: " + carte.id
+    ul
+        li= "firstname: " + carte.firstname
+    ul
+        li= "Genre: " + carte.genre
+    ul
+        li= "Type: " + carte.type
+    ul
+        li= "Damage: " + carte.damage
+    ul
+        li= "Defense: " + carte.defense
+    ul
+        li= "Health: " + carte.health
+
+    br
+    form(action='/cartes/' + carte.id, method='POST')
+      button.btn.btn-primary Delete
+    br
+    a(href='/cartes/' + carte.id + '/edit') 
+      button.btn.btn-primary Edit
