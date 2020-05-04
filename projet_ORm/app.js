@@ -20,8 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Route pour Home
 app.use('/', indexRouter);
+
+// Route pour cartes
 app.use('/cartes', cartesRouter);
+
+// Route pour users
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
