@@ -13,8 +13,8 @@ block content
         li= "lastname: " + user.lastname
 
     br
-    form(action='/users/' + user.id, method='POST')
+    form(action='/user/' + user.id, method='POST')
       button.btn.btn-primary Delete
     br
-    a(href='/users/' + user.id + '/edit') 
+    a(href='/user/' + user.id + '/edit') 
       button.btn.btn-primary Edit

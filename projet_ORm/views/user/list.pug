@@ -4,8 +4,8 @@ block content
 
     h1 Users
 
-    a(href='/users/ajouter') Nouvel utilisateur
+    a(href='/register') Nouvel utilisateur
 
     each user in users
         p
-            a(href='/users/'+ user.id)= user.username
+            a(href='/user/'+ user.id)= user.username

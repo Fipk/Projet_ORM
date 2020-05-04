@@ -3,7 +3,7 @@ extends ../layout
 block content
 
     h1 Nouvelle utilisateur
-    form(action='/users/' + user.id +"/patch", method='POST')
+    form(action='/user/' + user.id +"/patch", method='POST')
 
         .form-group
         label(for='firstname') Firstname

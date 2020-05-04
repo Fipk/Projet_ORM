@@ -27,6 +27,7 @@ router.get('/', async (req, res, next) => {
 }
 });
 
+/* Route get pour afficher les infos d'un utilisateur id */
 router.get("/:userId", async (req, res, next) => {
 
   try {
@@ -52,13 +53,7 @@ router.get("/:userId", async (req, res, next) => {
   }
 })
 
-router.get("/ajouter", async (req, res, next) => {
-
-  res.render("carte/form", {
-    title: "Ajouter une carte"
-  })
-})
-
+/* Route get pour modifer un utilisateur spécifique avec id */
 router.get("/:userId/edit", async (req, res, next) => {
 
   try {
@@ -66,7 +61,7 @@ router.get("/:userId/edit", async (req, res, next) => {
       const user = await model.User.findByPk(req.params.userId)
 
       res.render("user/patch", {
-          title: "Modifier une carte",
+          title: "Modifier un utilisateur",
           user: user,
       })
 
@@ -76,56 +71,7 @@ router.get("/:userId/edit", async (req, res, next) => {
 
 })
 
-router.post("/", async (req, res, next) => {
-
-  try {
-
-    if (req.body.username && req.body.firstname && req.body.lastname &&
-      req.body.password && req.body.confirmPassword) {
-
-      if (req.body.password === req.body.confirmPassword) {
-        console.log('coucou')
-      } else {
-        throw new Error("Vos mots de passe de correspondent pas.")
-      }
-
-    } else {
-      throw new Error("Il manque des informations à rentrer. Veuillez vérifier.")
-    }
-
-    const alreadyTaken = await model.User.findOne({
-      where: {
-        username: req.body.username
-      }
-    })
-
-    if (alreadyTaken) {
-      throw new Error("Ce nom d'utilisateur est déjà pris.")
-    }
-
-    const newUser = await model.User.create({
-      username: req.body.username,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      password: req.body.password
-    })
-
-    res.format({
-
-      html: () => {
-        res.redirect('/')
-      },
-
-      json: () => {
-        res.json(newUser)
-      }
-    })
-
-  } catch (Err) {
-    next(Err)
-  }
-})
-
+/* Route post pour enlever un utilisateur */
 router.post("/:userId", async (req, res, next) => {
 
   try {
@@ -139,7 +85,7 @@ router.post("/:userId", async (req, res, next) => {
       res.format({
 
           html: () => {
-              res.redirect('/users')
+              res.redirect('/user')
           },
 
           json: () => {
@@ -152,6 +98,8 @@ router.post("/:userId", async (req, res, next) => {
   }
 })
 
+
+/* Route post pour modifier un utilisateur */
 router.post("/:userId/patch", async (req, res, next) => {
 
   try {
@@ -179,7 +127,7 @@ router.post("/:userId/patch", async (req, res, next) => {
       res.format({
 
           html: function () {
-              res.redirect('/users')
+              res.redirect('/user')
           },
 
           json: function () {
