@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const model = require('../models')
+const bcrypt = require("../utils/bcrypt")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,10 +24,8 @@ router.post("/", async (req, res, next) => {
     if (req.body.username && req.body.firstname && req.body.lastname &&
       req.body.password && req.body.confirmPassword) {
 
-        hashedPassword = await bcrypt.hash(req.body.password)
-
       if (req.body.password === req.body.confirmPassword) {
-        console.log('coucou')
+        hashedPassword = await bcrypt.hash(req.body.password)
       } else {
         throw new Error("Vos mots de passe de correspondent pas.")
       }
